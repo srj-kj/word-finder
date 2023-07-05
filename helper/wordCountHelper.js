@@ -51,9 +51,9 @@ export const wordcountFind = async (data) => {
 
     if (website) {
       website.data.push(details);
-      await website.save();
+      return await website.save();
     } else {
-      await Website.create({ userId, data: [details] });
+      return await Website.create({ userId, data: [details] });
     }
   } catch (error) {
     console.error("Error retrieving website content:", error.message);
@@ -84,7 +84,7 @@ export const deleteData = async (userId, id) => {
     if (itemIndex >= 0) {
       website.data.splice(itemIndex, 1);
       await website.save();
-      return website.data;
+      return ;
     } else {
       const err = { message: "Item not found", statusCode: 400 };
       throw err;

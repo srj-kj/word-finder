@@ -1,7 +1,6 @@
 const errorHandler = (err, req, res, next) => {
   
-    console.log("Status Code:", err.statusCode);
-    console.log("Error Message:", err.message);
+    c
   
     let statusCode = err.statusCode || 500; 
     let message = err.message || "Internal Server Error";

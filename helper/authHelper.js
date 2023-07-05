@@ -23,7 +23,7 @@ export const userLogin = async (details, next) => {
     throw err;
   } else {
     const response = await User.findOne({ email: details.email });
-    console.log(response);
+    
     if (response) {
       const auth = await bcrypt.compare(details.password, response.password);
       if (!auth) {

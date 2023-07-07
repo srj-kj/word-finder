@@ -21,7 +21,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/", authRoutes);
-
+app.all('*',(req,res,next)=>{
+  const err = { message: "Not found(Invalid Route)", statusCode: 404 };
+  throw err;
+})
 app.use(errorHandler);
 connectToDatabase();
 
